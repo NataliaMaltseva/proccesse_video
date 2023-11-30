@@ -1,0 +1,9 @@
+python-dotenv == 0.20.0
+moviepy == 1.0.3
+numpy ==1.23.0
+opencv-python>=4.1.2
+pillow ==9.0.1
+urllib3 ==1.25.8 
+
+imutils == 0.5.4
+uuid == 1.30
