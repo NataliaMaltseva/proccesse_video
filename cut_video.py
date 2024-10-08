@@ -10,7 +10,6 @@ def ffmpeg_extract_subclip(filename: str, t1: float, t2: float, saved_path: str 
     the times ``t1`` in minutes and ``t2``  in minutes.
     """
     os.makedirs(saved_path, exist_ok=True)
-
     if t2 < t1:
         print(f"Некорректный интервал времени!")
         return None
@@ -19,6 +18,7 @@ def ffmpeg_extract_subclip(filename: str, t1: float, t2: float, saved_path: str 
     min_t = [int(t) for t in [t1, t2]]
     sec_t = [int(round(t % 1, 2) * 100) for t in [t1, t2]]
     T1, T2 = [int(60 * m) + (s) for m, s in zip(min_t, sec_t)]
+    print(T2-T1)
     if not targetname:  
         save_video_path = os.path.join(saved_path,"%sSUB%d_%d.%s" % (name, T1, T2, ext[1:]))
     else:
@@ -50,14 +50,14 @@ def ffmpeg_extract_subclip(filename: str, t1: float, t2: float, saved_path: str 
 
 if __name__ == "__main__":
     load_dotenv()
-    saved_path = os.getenv("SAVEPATHSEGMENTS")
-    video_path = os.getenv("VIDEOPATH")
+    saved_path = "194..mp4" #os.getenv("SAVEPATHSEGMENTS")
+    video_path = "urfu-urgeu_1,2part_01.04.23SUB187_194..mp4" #os.getenv("VIDEOPATH")
     # начало фрагмента. Формат: минуты.секунды
     try:
-        start_time = float(os.getenv("START_TIME"))
+        start_time = float(17.30)
         try:
             # конец фрагмента. Формат: минуты.секунды
-            end_time = float(os.getenv("END_TIME"))
+            end_time = float(8.40)
             result = ffmpeg_extract_subclip(filename=video_path, t1=start_time, t2=end_time, saved_path=saved_path)
             if result is not None:
                 print("Done!")

@@ -10,7 +10,7 @@ videos_path = [os.getenv("VIDEOPATH")]
 fp = int(os.getenv("FRAME_PREIOD"))
 print(f"Process {videos_path} video")
 # start index
-i = 50402
+i = 75123
 # сколько кадров пропускать
 key = 0
 # count frame
